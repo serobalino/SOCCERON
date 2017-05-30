@@ -13,7 +13,7 @@ class AutentificarJugador extends Controller{
         $this->middleware(['guest'],['except' => 'logout']);
     }
     public function login(Request $request){
-        if(Auth::guard('jua')->attempt(['cedula_ju'=>$request->cedula,'password'=>$request->contrasena],true))
+        if(Auth::guard('jua')->attempt(['correo_ju'=>$request->cedula,'password'=>$request->contrasena],true))
             return redirect()->intended(route('jugador.inicio'));
     }
     public function logout(){
