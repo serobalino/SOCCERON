@@ -92,8 +92,8 @@ return [
     */
 
     'passwords' => [
-        'users' => [
-            'provider' => 'users',
+        'jugador' => [
+            'provider' => 'jue',
             'table' => 'password_resets',
             'expire' => 60,
         ],
