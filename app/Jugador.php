@@ -6,9 +6,8 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 
-class Jugador extends Model
-{
-  use Notifiable;
+class Jugador extends Authenticatable{
+    use Notifiable;
     protected $guard ='jug';
 
     protected $table = 'jugadores';
