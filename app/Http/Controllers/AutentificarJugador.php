@@ -19,8 +19,6 @@ class AutentificarJugador extends Controller
         {
           if(Auth::guard('jua')->attempt(['cedula_ju'=>$request->cedula,'password'=>$request->contrasena],true))
               return redirect()->intended(route('jugador.inicio'));
-
-
         }
 
         public function logout()
