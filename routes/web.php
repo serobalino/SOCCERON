@@ -11,6 +11,5 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'JugadoresController@index');
+Route::post('/', 'JugadoresController@ingresar');
