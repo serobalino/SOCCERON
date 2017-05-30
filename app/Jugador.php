@@ -12,7 +12,7 @@ class Jugador extends Model
     protected $guard ='jug';
 
     protected $table = 'jugadores';
-    protected $primaryKey ='cedula_ju';
+    protected $primaryKey ='id_ju';
     public $incrementing= false;
     public $timestamps=false;
 
