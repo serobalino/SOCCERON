@@ -14,7 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
+        'guard' => 'jug',
         'passwords' => 'users',
     ],
 
@@ -36,9 +36,9 @@ return [
     */
 
     'guards' => [
-        'web' => [
+        'jug' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'jugadores',
         ],
 
         'api' => [
@@ -65,9 +65,9 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'jugadores' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => App\Jugador::class,
         ],
 
         // 'users' => [
