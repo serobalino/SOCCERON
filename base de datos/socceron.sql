@@ -57,7 +57,7 @@ create table jugadores
 (
    id_ju                bigint not null auto_increment,
    nombre_ju            char(20) not null,
-   contrasena_ju        char(20) not null,
+   contrasena_ju        char(61) not null,
    correo_ju            varchar(50) not null,
    token_ju             char(100),
    fb_ju                bool default 0,
