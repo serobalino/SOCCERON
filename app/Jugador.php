@@ -8,15 +8,16 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Jugador extends Authenticatable{
     use Notifiable;
-    protected $guard ='jug';
-
-    protected $table = 'jugadores';
-    protected $primaryKey ='id_ju';
-    public $incrementing= false;
-    public $timestamps=false;
+    protected $guard        = 'jug';
+    protected $table        = 'jugadores';
+    protected $primaryKey   = 'id_ju';
+    public    $incrementing = false;
+    public    $timestamps   = false;
+    protected $hidden       = ['contrasena_ju', 'token_ju'];
+    protected $fillable     = ['correo_ju', 'nombre_ju','id_ju'];
 
     public function getAuthIdentifier() {
-        return $this->cedula_ju;
+        return $this->id_ju;
     }
     public function getAuthPassword() {
         return $this->contrasena_ju;

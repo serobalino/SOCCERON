@@ -11,5 +11,6 @@
 |
 */
 
-Route::get('/', 'JugadoresController@index');
-Route::post('/', 'JugadoresController@ingresar');
+Route::get('/',function(){
+  return ('vista inicio');
+})->name('index');

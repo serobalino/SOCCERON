@@ -15,7 +15,7 @@ return [
 
     'defaults' => [
         'guard' => 'jug',
-        'passwords' => 'users',
+        'passwords' => 'jugador',
     ],
 
     /*
@@ -42,8 +42,8 @@ return [
         ],
 
         'api' => [
-            'driver' => 'token',
-            'provider' => 'users',
+            'driver' => 'session',
+            'provider' => 'jugadores',
         ],
     ],
 
@@ -93,7 +93,7 @@ return [
 
     'passwords' => [
         'jugador' => [
-            'provider' => 'jue',
+            'provider' => 'jugadores',
             'table' => 'password_resets',
             'expire' => 60,
         ],
