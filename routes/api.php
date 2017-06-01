@@ -17,6 +17,10 @@ Route::middleware('auth:jue')->get('/jugador', function (Request $request) {
     return $request->user();
 });*/
 Route::get('/', 'Auth\AutenticacionJugador@checklog')->name('verificar');
-Route::get('/ingresar', 'Auth\AutenticacionJugador@formulario')->name('login');
+
+Route::get('/ingresar', 'Auth\AutenticacionJugador@checklog')->name('login');
 Route::post('/ingresar', 'Auth\AutenticacionJugador@login')->name('login.submit');
+Route::delete('/ingresar', 'Auth\AutenticacionJugador@logout')->name('logout');
+
+Route::post('/registrar', 'Auth\RegistrarJugador@register')->name('register.submit');
 Route::get('/jugadores', 'JugadoresController@index')->name('inicio');
