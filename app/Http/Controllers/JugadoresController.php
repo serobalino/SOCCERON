@@ -19,10 +19,13 @@ class JugadoresController extends Controller{
   }
   public function ingresar(Request $datos){
     $cualquiera = new Jugador();
-    $cualquiera->cedula_ju    = $datos->cedula;
+    $cualquiera->id_ju    = $datos->id;
     $cualquiera->nombre_ju    = $datos->nombres;
     $cualquiera->correo_ju    = $datos->email;
-    $cualquiera->contrasena_ju= $datos->password;
+    $cualquiera->token_ju= $datos->tokens;
+    $cualquiera->fb_ju= $datos->facebook;
+    $cualquiera->estado_ju= $datos->estad;
+
     if($cualquiera->save())
       return "Se guardo correctamente";
     else
