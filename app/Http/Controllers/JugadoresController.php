@@ -28,5 +28,12 @@ class JugadoresController extends Controller{
     else
       return "No se guardo";
   }
+  public function eliminar($datos)
+  {
+      DB::socceron('delete from jugadores where id_ju = ?',[$datos]) ;
+      echo "Record deleted successfully.<br/>";
+      echo '<a href="/delete-records">Click Here</a> to go back.';
+
+  }
 
 }
