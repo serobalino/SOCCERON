@@ -28,5 +28,6 @@ class RutasController extends Controller{
       'ver_equipo'      =>  ['url'=>route('ver.equipo'),'metodo'=>'get'],
       'ver_cancha'      =>  ['url'=>route('ver.cancha'),'metodo'=>'get']
     ];
+    return $lista;
     }
 }
