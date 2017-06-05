@@ -41,7 +41,7 @@ class JugadoresController extends Controller{
   }
   public function verjugador()
   {
-    echo "hla";
+    return "hla";
   }
 
   public function unirsepartida()
