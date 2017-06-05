@@ -19,8 +19,8 @@ class RegistrarJugador extends Controller{
           'correo'      => 'required|email',
       ]);
           $jugador = new Jugador;
-          $jugador->nombre_ju     = $data['nombre'];
-          $jugador->correo_ju     = $data['correo'];
+          $jugador->nombre_ju     = $datos['nombre'];
+          $jugador->correo_ju     = $datos['correo'];
           $jugador->fb_ju         = true;
           if($jugador->save())
             return (['return'=>true,'mensaje'=>'Se registro con exito']);
@@ -42,9 +42,9 @@ class RegistrarJugador extends Controller{
           return (['return'=>false,'mensaje'=>'El correo ya existe']);
         else{
           $jugador = new Jugador;
-          $jugador->nombre_ju     = $data['nombre'];
-          $jugador->correo_ju     = $data['correo'];
-          $jugador->contrasena_ju = bcrypt($data['contrasena']);
+          $jugador->nombre_ju     = $datos['nombre'];
+          $jugador->correo_ju     = $datos['correo'];
+          $jugador->contrasena_ju = bcrypt($datos['contrasena']);
           if($jugador->save())
             return (['return'=>true,'mensaje'=>'Se registro con exito']);
           else
