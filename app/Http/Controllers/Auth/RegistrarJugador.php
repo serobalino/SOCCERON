@@ -12,7 +12,7 @@ class RegistrarJugador extends Controller{
     public function __construct(){
         $this->middleware('guest');
     }
-
+/*para registrar con facebook*/
     public function fb(Request $datos){
       $validacion = Validator::make($datos->all(), [
           'nombre'      => 'required',
@@ -26,8 +26,7 @@ class RegistrarJugador extends Controller{
             return (['return'=>true,'mensaje'=>'Se registro con exito']);
           else
             return (['return'=>false,'mensaje'=>'No se pudo registrar reintente']);
-        }
-    
+    }
 
     public function crear(Request $datos){
       $validacion = Validator::make($datos->all(), [
