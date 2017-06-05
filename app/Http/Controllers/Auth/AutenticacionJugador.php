@@ -15,7 +15,7 @@ class AutenticacionJugador extends Controller{
     }
     //hace login
     public function login(Request $request){
-        if(Auth::guard('jug')->attempt(['correo_ju'=>$request->correo,'password'=>$request->contrasena],true))
+        if(Auth::guard('jug')->attempt(['correo_ju'=>$request->correo,'password'=>$request->contrasena,'estado_ju'=>true],true))
           return (['estado'=>true,'mensaje'=>'Credenciales Correctos','vista'=>'inicio','info'=>Auth::user()]);
         else
           return (['estado'=>false,'mensaje'=>'Credenciales Incorrectos','vista'=>'login','url'=>route('login')]);
