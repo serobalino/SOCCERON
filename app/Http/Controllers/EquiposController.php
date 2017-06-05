@@ -22,4 +22,6 @@ class EquiposController extends Controller
     else
       return "No se guardo";
   }
+
+
 }

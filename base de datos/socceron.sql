@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     5/6/2017 13:11:35                            */
+/* Created on:     5/6/2017 13:54:25                            */
 /*==============================================================*/
 
 
@@ -61,6 +61,7 @@ create table jugadores
    correo_ju            varchar(50) not null,
    token_ju             char(100),
    fb_ju                char(20),
+   estado_ju            bool default 1,
    primary key (id_ju)
 );
 

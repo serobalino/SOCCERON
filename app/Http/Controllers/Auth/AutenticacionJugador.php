@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 use Auth;
+use App\Jugadores;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -31,4 +32,8 @@ class AutenticacionJugador extends Controller{
       Auth::guard('jug')->logout();
       return (['estado'=>false,'mensaje'=>'Sesion cerrada','vista'=>'login']);
     }
+    
+
+
+
 }
