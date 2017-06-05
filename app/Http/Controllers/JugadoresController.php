@@ -33,7 +33,7 @@ class JugadoresController extends Controller{
   }
   public function eliminar($datos)
   {
-      
+
   }
   public function modificarjugador()
   {
@@ -41,6 +41,6 @@ class JugadoresController extends Controller{
   }
   public function verjugador()
   {
-    echo "hla";
+    return "hla";
   }
 }
