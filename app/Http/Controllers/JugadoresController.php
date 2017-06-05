@@ -35,5 +35,12 @@ class JugadoresController extends Controller{
   {
       
   }
+  public function modificarjugador()
+  {
 
+  }
+  public function verjugador()
+  {
+    echo "hla";
+  }
 }
