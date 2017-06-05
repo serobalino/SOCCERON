@@ -16,10 +16,12 @@ use Illuminate\Http\Request;
 Route::middleware('auth:jue')->get('/jugador', function (Request $request) {
     return $request->user();
 });*/
+
+//realizamos qui porque la aplicacion da un servicio
+//si fuera en web es porque ocupo servicios ya exsistentes
+
 Route::get('/','RutasController@index');
-
 Route::get('/comprobar', 'Auth\AutenticacionJugador@checklog')->name('comprobar');
-
 Route::get('/ingresar', 'Auth\AutenticacionJugador@checklog')->name('login');
 Route::post('/ingresar', 'Auth\AutenticacionJugador@login')->name('login.submit');
 Route::post('/ingresarfb','Auth\AutenticacionJugador@fblogin')->name('loginfb.submit');
@@ -27,3 +29,8 @@ Route::delete('/ingresar', 'Auth\AutenticacionJugador@logout')->name('logout');
 Route::post('/registrar', 'Auth\RegistrarJugador@crear')->name('register.submit');
 Route::get('/jugadores', 'JugadoresController@index')->name('inicio');
 Route::post('/registrarfb', 'Auth\RegistrarJugador@fb')->name('registerfb.submit');
+
+
+
+Route::get('/jugador', 'RutasController@funcionesjugador')-> name('funciones');//muestra todas las funciones del jugador
+Route::post('/jugador/modificar', 'JugadoresController@modificarjugador')-> name('modificar');
