@@ -31,9 +31,9 @@ class JugadoresController extends Controller{
     else
       return "No se guardo";
   }
-  public function eliminar($datos)
+  public function desactivarjugador($datos)
   {
-      
+
   }
   public function modificarjugador()
   {
@@ -42,5 +42,23 @@ class JugadoresController extends Controller{
   public function verjugador()
   {
     echo "hla";
+  }
+
+  public function unirsepartida()
+  {
+    return "unirsepartida";
+
+  }
+  public function verpartida()
+  {
+    return "verpartida";
+  }
+  public function verequipo()
+  {
+    return "verquipo";
+  }
+  public function vercancha()
+  {
+    return "vercancha";
   }
 }

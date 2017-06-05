@@ -26,7 +26,7 @@ class RutasController extends Controller{
       'unirse_partida'  =>  ['url'=>route('unir'),'metodo'=>'post'],
       'ver_partida'     =>  ['url'=>route('ver.partida'),'metodo'=>'get'],
       'ver_equipo'      =>  ['url'=>route('ver.equipo'),'metodo'=>'get'],
-      'ver_cancha'      =>  ['url'=>route('ver.cancha'),'metodo' => 'get']
+      'ver_cancha'      =>  ['url'=>route('ver.cancha'),'metodo'=>'get']
     ];
     }
 }
