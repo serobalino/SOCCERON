@@ -34,9 +34,9 @@ Route::post('/registrarfb', 'Auth\RegistrarJugador@fb')->name('registerfb.submit
 
 Route::get('/jugador', 'RutasController@funcionesjugador')-> name('funciones');//muestra todas las funciones del jugador
 Route::get('/jugador','JugadoresController@desactivarjugador')->name('desactivar');
-Route::post('/jugador_modificar', 'JugadoresController@modificarjugador')-> name('modificar');
-Route::get('/jugador_ver', 'JugadoresController@verjugador')-> name('ver');
-Route::post('/jugador_unirsepartida', 'JugadoresController@unirsepartida')-> name('unir');
-Route::get('/jugador_verpartida', 'JugadoresController@verpartida')-> name('ver.partida');
-Route::get('/jugador_verequipo', 'JugadoresController@verequipo')-> name('ver.equipo');
-Route::get('/jugador_vercancha', 'JugadoresController@vercancha')-> name('ver.cancha');
+Route::post('/jugador', 'JugadoresController@modificarjugador')-> name('modificar');
+Route::get('/jugador', 'JugadoresController@verjugador')-> name('ver');
+Route::post('/jugador', 'JugadoresController@unirsepartida')-> name('unir');
+Route::get('/jugador', 'JugadoresController@verpartida')-> name('ver.partida');
+Route::get('/jugador', 'JugadoresController@verequipo')-> name('ver.equipo');
+Route::get('/jugador', 'JugadoresController@vercancha')-> name('ver.cancha');
