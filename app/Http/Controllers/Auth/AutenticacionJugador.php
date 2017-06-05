@@ -32,7 +32,17 @@ class AutenticacionJugador extends Controller{
       Auth::guard('jug')->logout();
       return (['estado'=>false,'mensaje'=>'Sesion cerrada','vista'=>'login']);
     }
-    
+
+    public function fblogin(Request $request){
+      $id = Jugador::where('correo_ju',$request->correo)->first();
+      if($id){
+        $id->fb_ju  = $request->fb;
+        $id->save();
+        Auth::loginUsingId($id->id_ju);
+        return (['estado'=>true,'mensaje'=>'Credenciales Correctos','vista'=>'inicio','info'=>Auth::user()]);
+      }else
+        return (['estado'=>false,'mensaje'=>'Credenciales Incorrectos','vista'=>'registro','url'=>route('registerfb.submit')]);
+    }
 
 
 
