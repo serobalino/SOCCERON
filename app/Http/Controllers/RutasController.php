@@ -21,11 +21,12 @@ class RutasController extends Controller{
     $lista =[
 
       'desactivar'      =>  ['url'=>route('desactivar'),'metodo'=>'get'],
-      'modificar'       =>  ['url'=>route('modificar'),'metodo'=>''
-      'unirse_partida'  =>  route('unirse'),
-      'ver_partida'     =>  route('ver_partida'),
-      'ver_equipo'      =>  route('ver_equipo'),
-      'ver_cancha'      =>  route('registrar'),
+      'modificar'       =>  ['url'=>route('modificar'),'metodo'=>'post'];
+      'modificar'       =>  ['url'=>route('ver'),'metodo'=>'get'];
+      'unirse_partida'  =>  ['url'=>route('unirse'),'unir'=>'post'];
+      'ver_partida'     =>  ['url'=>route('ver_partida'),'ver.partida'=>'get'];
+      'ver_equipo'      =>  ['url'=>route('ver_equipo'),'ver.equipo'=>'get'];
+      'ver_cancha'      =>  ['url'=>route('ver_cancha'),'ver.cancha' = 'get'];
     ];
     }
 }
