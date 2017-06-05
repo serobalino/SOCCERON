@@ -30,9 +30,6 @@ Route::post('/registrar', 'Auth\RegistrarJugador@crear')->name('register.submit'
 Route::get('/jugadores', 'JugadoresController@index')->name('inicio');
 Route::post('/registrarfb', 'Auth\RegistrarJugador@fb')->name('registerfb.submit');
 
-
-
-
 Route::get('/jugador', 'RutasController@funcionesjugador')-> name('funciones');//muestra todas las funciones del jugador
 Route::get('/jugador/desactivar','JugadoresController@desactivarjugador')->name('desactivar');
 Route::post('/jugador/modificar', 'JugadoresController@modificarjugador')-> name('modificar');

@@ -35,13 +35,13 @@ class JugadoresController extends Controller{
   {
 
   }
-  public function modificarjugador()
+  public function modificarjugador(Request $datos)
   {
-
+    
   }
   public function verjugador()
   {
-    return "hla";
+    return Auth::user();
   }
 
   public function unirsepartida()
