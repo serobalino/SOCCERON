@@ -32,7 +32,7 @@ class RegistrarJugador extends Controller{
       $validacion = Validator::make($datos->all(), [
           'nombre'      => 'required',
           'correo'      => 'required|email',
-          'contrasena'  => 'required|',
+          'contrasena'  => 'required',
       ]);
       if ($validacion->fails()) {
         return (['return'=>false,'mensaje'=>'Faltan campos']);
