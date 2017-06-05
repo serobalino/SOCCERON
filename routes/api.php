@@ -34,3 +34,4 @@ Route::post('/registrarfb', 'Auth\RegistrarJugador@fb')->name('registerfb.submit
 
 Route::get('/jugador', 'RutasController@funcionesjugador')-> name('funciones');//muestra todas las funciones del jugador
 Route::post('/jugador/modificar', 'JugadoresController@modificarjugador')-> name('modificar');
+Route::get('/jugador/modificar', 'JugadoresController@verjugador')-> name('ver');

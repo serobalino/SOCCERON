@@ -20,8 +20,8 @@ class RutasController extends Controller{
   public function funcionesjugador(){
     $lista =[
 
-      'desactivar'      =>  route('desactivar'),
-      'modificar'       =>  route('modificar'),
+      'desactivar'      =>  ['url'=>route('desactivar'),'metodo'=>'get'],
+      'modificar'       =>  ['url'=>route('modificar'),'metodo'=>''
       'unirse_partida'  =>  route('unirse'),
       'ver_partida'     =>  route('ver_partida'),
       'ver_equipo'      =>  route('ver_equipo'),
