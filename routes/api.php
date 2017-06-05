@@ -24,7 +24,6 @@ Route::get('/ingresar', 'Auth\AutenticacionJugador@checklog')->name('login');
 Route::post('/ingresar', 'Auth\AutenticacionJugador@login')->name('login.submit');
 Route::post('/ingresarfb','Auth\AutenticacionJugador@fblogin')->name('loginfb.submit');
 Route::delete('/ingresar', 'Auth\AutenticacionJugador@logout')->name('logout');
-
 Route::post('/registrar', 'Auth\RegistrarJugador@crear')->name('register.submit');
 Route::get('/jugadores', 'JugadoresController@index')->name('inicio');
 Route::post('/registrarfb', 'Auth\RegistrarJugador@fb')->name('registerfb.submit');
