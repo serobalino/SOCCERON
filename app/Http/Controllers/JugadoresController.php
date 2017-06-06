@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Jugador;
@@ -37,8 +37,25 @@ class JugadoresController extends Controller{
   }
   public function modificarjugador(Request $datos)
   {
-    
+    $validacion = Validator::make($datos->all(), [
+        'nombre'      => 'required',
+        'contrasena'  => 'required',
+    ]);
+    if ($validacion->fails()) {
+      return (['return'=>false,'mensaje'=>'Faltan campos']);
+    }
+    else{
+      $jugador  = Jugador::find(Auth::id());//extrae el id cuando esta logueado y los datos de la base con todos los campos
+
+          $jugador->nombre_ju     = $datos->nombre;
+          $jugador->contrasena_ju = bcrypt($datos->contrasena);
+
+          if($jugador->save())
+            return (['return'=>true,'mensaje'=>'Se registro con exito']);
+          else
+            return (['return'=>false,'mensaje'=>'No se pudo registrar reintente']);
   }
+}
   public function verjugador()
   {
     return Auth::user();
