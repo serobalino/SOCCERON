@@ -39,3 +39,6 @@ Route::post('/jugador/unir', 'JugadoresController@unirsepartida')->name('unir');
 Route::get('/jugador/verpartida', 'JugadoresController@verpartida')->name('ver.partida');
 Route::get('/jugador/verequipo', 'JugadoresController@verequipo')->name('ver.equipo');
 Route::get('/jugador/vercancha', 'JugadoresController@vercancha')-> name('ver.cancha');
+
+Route::get('/partida', 'RutasController@funcionespartida')->name('fpartida');
+Route::post('/partida/crear')
