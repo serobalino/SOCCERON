@@ -20,7 +20,6 @@ class RutasController extends Controller{
 
   public function funcionesjugador(){
     $lista =[
-
       'desactivar'      =>  ['url'=>route('desactivar'),'metodo'=>'get'],
       'modificarjugador'=>  ['url'=>route('modificar'),'metodo'=>'post'],
       'verjugador'      =>  ['url'=>route('ver'),'metodo'=>'get'],
@@ -30,5 +29,11 @@ class RutasController extends Controller{
       'ver_cancha'      =>  ['url'=>route('ver.cancha'),'metodo'=>'get']
     ];
     return $lista;
+    }
+
+    public function funcionespartida(){
+      $lista=[
+                
+      ]
     }
 }

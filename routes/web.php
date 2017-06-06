@@ -12,5 +12,5 @@
 */
 
 Route::get('/',function(){
-  return ('vista inicio');
+  return view('index');
 })->name('index');
