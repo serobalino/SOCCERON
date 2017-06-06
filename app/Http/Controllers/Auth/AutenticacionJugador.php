@@ -25,7 +25,7 @@ class AutenticacionJugador extends Controller{
       if (Auth::viaRemember() || Auth::check())
         return (['estado'=>true,'mensaje'=>'Credenciales guardados','vista'=>'inicio','info'=>Auth::user()]);
       else
-        return (['estado'=>true,'mensaje'=>'Credenciales no guardados','vista'=>'login','url'=>route('login')]);
+        return (['estado'=>false,'mensaje'=>'Credenciales no guardados','vista'=>'login','url'=>route('login')]);
     }
     //para logout
     public function logout(){
