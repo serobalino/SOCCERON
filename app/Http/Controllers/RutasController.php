@@ -12,7 +12,8 @@ class RutasController extends Controller{
       'comprobarLogin'  =>  ['url'=>route('comprobar'),'metodo'=>'get'],
       'login'           =>  ['url'=>route('login.submit'),'metodo'=>'post'],
       'registrar'       =>  ['url'=>route('register.submit'),'metodo'=>'post'],
-      'logout'          =>  ['url'=>route('logout'),'metodo'=>'delete']
+      'logout'          =>  ['url'=>route('logout'),'metodo'=>'delete'],
+      'activar'         =>  ['url'=>route('activar'),'metodo'=>'post']
     ];
     return $lista;
   }
