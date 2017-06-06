@@ -11,54 +11,43 @@ class JugadoresController extends Controller{
   public function __construct(){
     $this->middleware('auth:jug');
   }
-
-  public function index()
-  {
+  public function index(){
     $cualquiera=Jugador::all();
       return $cualquiera;
   }
-  public function ingresar(Request $datos){
-    $cualquiera = new Jugador();
-    $cualquiera->id_ju    = $datos->id;
-    $cualquiera->nombre_ju    = $datos->nombres;
-    $cualquiera->correo_ju    = $datos->email;
-    $cualquiera->token_ju= $datos->tokens;
-    $cualquiera->fb_ju= $datos->facebook;
-    $cualquiera->estado_ju= $datos->estad;
+  public function desactivarjugador(){
+    $cualquiera = Jugador::find(Auth::id());//select de id autentificado
+    $cualquiera->estado_ju=false;
+    if ($cualquiera->save()) {
+      Auth::guard('jug')->logout();//deslogueo
+      return (['estado'=>true,'mensaje'=>'Se ha desactivado la cuenta','vista'=>'login']);
+    }
+    else {
+      return (['estado'=>false,'mensaje'=>'Error','vista'=>'inicio']);
+    }
 
-    if($cualquiera->save())
-      return "Se guardo correctamente";
-    else
-      return "No se guardo";
-  }
-  public function desactivarjugador($datos)
-  {
+
+
+
+    return $cualquiera;
 
   }
-  public function modificarjugador(Request $datos)
-  {
-    
+  public function modificarjugador(){
+    return "asdasd";
   }
-  public function verjugador()
-  {
+  public function verjugador(){
     return Auth::user();
   }
-
-  public function unirsepartida()
-  {
+  public function unirsepartida(){
     return "unirsepartida";
-
   }
-  public function verpartida()
-  {
+  public function verpartida(){
     return "verpartida";
   }
-  public function verequipo()
-  {
+  public function verequipo(){
     return "verquipo";
   }
-  public function vercancha()
-  {
+  public function vercancha(){
     return "vercancha";
   }
 }
