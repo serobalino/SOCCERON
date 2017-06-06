@@ -41,4 +41,7 @@ Route::get('/jugador/verequipo', 'JugadoresController@verequipo')->name('ver.equ
 Route::get('/jugador/vercancha', 'JugadoresController@vercancha')-> name('ver.cancha');
 
 Route::get('/partida', 'RutasController@funcionespartida')->name('fpartida');
-Route::post('/partida/crear')
+Route::post('/partida/crear', 'PartidosController@crearpartida')->name('crear.partida');
+Route::post('/partida/modificar', 'PartidosController@modificarpartida')->name('modificar.partida');
+Route::delete('/partida/eliminar', 'PartidosController@eliminarpartida')->name('eliminar.partida');
+Route::get('/partida/mostrar', 'PartidosController@mostrarpartida')->name('mostrar.partida');

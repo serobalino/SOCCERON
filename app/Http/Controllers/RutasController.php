@@ -36,7 +36,7 @@ class RutasController extends Controller{
         'crearpartida'        -> ['url'=>('crear.partida'),'metodo'=>'post'],
         'modificarpartida'    -> ['url'=>('modificar.partida'),'metodo'=>'post'],
         'eliminarpartida'     -> ['url'=>('eliminar.partida'),'metodo'=>'delete'],
-        'mostrarpartida'      -> ['url'=>('mostrarpartida'),'metodo'=>'get']
+        'mostrarpartida'      -> ['url'=>('mostrar.partida'),'metodo'=>'get']
       ];
     }
 }
