@@ -9,25 +9,19 @@ use Illuminate\Http\Request;
 
 class PartidosController extends Controller
 {
-
-
   public function __construct(){
       $this->middleware('guest');
   }
-
   public function crearpartida(Request $datos){
-
     $validacion = Validator::make($datos->all(), [
         'idEquipo'      => 'required',
         'idCancha'      => 'required',
         'fechaPartido'  => 'required',
     ]);
-
     if ($validacion->fails()) {
 
       return (['return'=>false,'mensaje'=>'Faltan campos']);
     }
-
     else{
 
         $partido = new Partido;
@@ -41,9 +35,6 @@ class PartidosController extends Controller
           return (['return'=>false,'mensaje'=>'Partido no se pudo registrar reintente']);
       }
     }
-
-
-
     public function modificarpartida(Request $datos){
       return "hols";
     }
