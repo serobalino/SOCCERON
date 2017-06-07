@@ -8,8 +8,22 @@ use Illuminate\Http\Request;
 
 class PartidosController extends Controller
 {
+    public function index(){
+      $part=Partidos::all();
+      return $part;
+    }
     public function crearpartida(Request $datos){
-      return "hola";
+      $part = new Jugador();
+      $part->id_part    = $datos->id;
+      $part->id_eq    = $datos->ideo;
+      $part->id_ca    = $datos->idc;
+      $part->fecha_part= $datos->fecha;
+      $part->estado_ju= $datos->estadp;
+
+      if(part->save())
+        return "Se creo la partida correctamente";
+      else
+        return "No se creo la partida";
     }
     public function modificarpartida(Request $datos){
       return "hols";
@@ -18,6 +32,7 @@ class PartidosController extends Controller
       return "hola";
     }
     public function mostrarpartida(){
-      return "hola";
+    $variable=Modelo::where('estado',true)->get();
+    return $variable;
     }
 }
