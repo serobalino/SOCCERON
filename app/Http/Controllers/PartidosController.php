@@ -9,12 +9,7 @@ use Illuminate\Http\Request;
 
 class PartidosController extends Controller
 {
-<<<<<<< HEAD
-    public function index(){
-      $part=Partidos::all();
-      return $part;
-    }
-=======
+
 
   public function __construct(){
       $this->middleware('guest');
@@ -47,24 +42,8 @@ class PartidosController extends Controller
       }
     }
 
-<<<<<<< HEAD
 
->>>>>>> origin/master
-    public function crearpartida(Request $datos){
-      $part = new Jugador();
-      $part->id_part    = $datos->id;
-      $part->id_eq    = $datos->ideo;
-      $part->id_ca    = $datos->idc;
-      $part->fecha_part= $datos->fecha;
-      $part->estado_ju= $datos->estadp;
 
-      if(part->save())
-        return "Se creo la partida correctamente";
-      else
-        return "No se creo la partida";
-    }
-=======
->>>>>>> origin/master
     public function modificarpartida(Request $datos){
       return "hols";
     }
