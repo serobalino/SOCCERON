@@ -8,5 +8,4 @@ class Partidos extends Model
 {
     protected $table = 'partidos';
     protected $primaryKey ='id_part';
-    
 }
