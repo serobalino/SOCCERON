@@ -33,11 +33,12 @@ class RutasController extends Controller{
 
     public function funcionespartida(){
       $lista=[
-        'crearpartida'        -> ['url'=>('crear.partida'),'metodo'=>'post'],
-        'modificarpartida'    -> ['url'=>('modificar.partida'),'metodo'=>'post'],
-        'eliminarpartida'     -> ['url'=>('eliminar.partida'),'metodo'=>'delete'],
-        'mostrarpartida'      -> ['url'=>('mostrar.partida'),'metodo'=>'get']
+        'crearpartida'        => ['url'=>route('crear.partida'),'metodo'=>'post'],
+        'modificarpartida'    => ['url'=>route('modificar.partida'),'metodo'=>'post'],
+        'eliminarpartida'     => ['url'=>route('eliminar.partida'),'metodo'=>'delete'],
+        'mostrarpartida'      => ['url'=>route('mostrar.partida'),'metodo'=>'get']
       ];
+      return $lista;
     }
-    
+
 }
