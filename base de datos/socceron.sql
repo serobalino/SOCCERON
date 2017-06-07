@@ -1,25 +1,23 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     5/6/2017 13:54:25                            */
+/* Created on:     7/6/2017 13:51:13                            */
 /*==============================================================*/
 
 
 drop table if exists canchas;
 
-drop table if exists conformado;
-
 drop table if exists equipos;
 
 drop table if exists jugadores;
 
-drop table if exists partidos;
+drop table if exists partidas;
 
 /*==============================================================*/
 /* Table: canchas                                               */
 /*==============================================================*/
 create table canchas
 (
-   id_can               int not null auto_increment,
+   id_can               int not null,
    descripcion_can      varchar(50) not null,
    sector_can           varchar(30) not null,
    tipo_can             char(20),
@@ -29,25 +27,14 @@ create table canchas
 );
 
 /*==============================================================*/
-/* Table: conformado                                            */
-/*==============================================================*/
-create table conformado
-(
-   id_ju                bigint not null,
-   id_eq                int not null,
-   fecha_co             timestamp,
-   primary key (id_ju, id_eq)
-);
-
-/*==============================================================*/
 /* Table: equipos                                               */
 /*==============================================================*/
 create table equipos
 (
-   id_eq                int not null auto_increment,
-   descripcion_eq       varchar(40) not null,
-   fecha_eq             timestamp,
-   primary key (id_eq)
+   id_part              int not null,
+   id_ju                bigint not null,
+   fecha_co             timestamp,
+   primary key (id_part, id_ju)
 );
 
 /*==============================================================*/
@@ -55,7 +42,7 @@ create table equipos
 /*==============================================================*/
 create table jugadores
 (
-   id_ju                bigint not null auto_increment,
+   id_ju                bigint not null,
    nombre_ju            char(20) not null,
    contrasena_ju        char(60) not null,
    correo_ju            varchar(50) not null,
@@ -66,27 +53,23 @@ create table jugadores
 );
 
 /*==============================================================*/
-/* Table: partidos                                              */
+/* Table: partidas                                              */
 /*==============================================================*/
-create table partidos
+create table partidas
 (
-   id_part              int not null auto_increment,
-   id_eq                int not null,
+   id_part              int not null,
    id_can               int not null,
    fecha_part           datetime not null,
    estado_part          bool,
    primary key (id_part)
 );
 
-alter table conformado add constraint fk_conformado foreign key (id_ju)
+alter table equipos add constraint fk_conformado2 foreign key (id_part)
+      references partidas (id_part) on delete restrict on update restrict;
+
+alter table equipos add constraint fk_conforman foreign key (id_ju)
       references jugadores (id_ju) on delete restrict on update restrict;
 
-alter table conformado add constraint fk_conformado2 foreign key (id_eq)
-      references equipos (id_eq) on delete restrict on update restrict;
-
-alter table partidos add constraint fk_juegan foreign key (id_eq)
-      references equipos (id_eq) on delete restrict on update restrict;
-
-alter table partidos add constraint fk_utilizan foreign key (id_can)
+alter table partidas add constraint fk_utilizan foreign key (id_can)
       references canchas (id_can) on delete restrict on update restrict;
 
