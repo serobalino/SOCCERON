@@ -9,10 +9,7 @@ use Illuminate\Http\Request;
 
 class PartidosController extends Controller
 {
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/master
   public function __construct(){
       $this->middleware('guest');
   }
@@ -39,10 +36,6 @@ class PartidosController extends Controller
           return (['return'=>false,'mensaje'=>'Partido no se pudo registrar reintente']);
       }
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
     public function modificarpartida(Request $datos){
       return "hols";
     }
