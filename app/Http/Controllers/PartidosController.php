@@ -8,10 +8,10 @@ use Illuminate\Http\Request;
 
 class PartidosController extends Controller
 {
-    public function crearpartida(){
+    public function crearpartida(Request $datos){
       return "hola";
     }
-    public function modificarpartida(){
+    public function modificarpartida(Request $datos){
       return "hols";
     }
     public function eliminarpartida(){
