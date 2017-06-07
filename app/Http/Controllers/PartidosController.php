@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Partidos;
+use Validator;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Partidos;
 use Validator;
@@ -10,6 +12,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 
 class PartidosController extends Controller
 {
+
   public function __construct(){
       $this->middleware('guest');
   }
@@ -31,7 +34,21 @@ class PartidosController extends Controller
         if($partido->save())
           return (['return'=>true,'mensaje'=>'Se registro con exito']);
         else
-          return (['return'=>false,'mensaje'=>'No se pudo registrar reintente']);
+          return (['return'=>false,'mensaje'=>'Partido no se pudo registrar reintente']);
       }
     }
-  }
+
+
+    public function crearpartida(Request $datos){
+      return "hola";
+    }
+    public function modificarpartida(Request $datos){
+      return "hols";
+    }
+    public function eliminarpartida(){
+      return "hola";
+    }
+    public function mostrarpartida(){
+      return "hola";
+    }
+}

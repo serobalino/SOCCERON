@@ -39,4 +39,5 @@ class RutasController extends Controller{
         'mostrarpartida'      -> ['url'=>('mostrar.partida'),'metodo'=>'get']
       ];
     }
+    
 }
