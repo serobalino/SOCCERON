@@ -28,8 +28,8 @@ class PartidasController extends Controller{
      * funcion que ingresa una nueva partida
      * se recibe en @elemento
      *                  cancha=> codigo de cancha
-     *                  fecha año-mes-dia hora:minuto:segundo
-     *                  jugadores 
+     *                  fecha
+     *                  jugadores
      *
      * */
     public function store(Request $elementos){
@@ -79,5 +79,29 @@ class PartidasController extends Controller{
             }
         }
 
+    }
+
+    /*
+     * funcion que cambia el estado a un partida
+     * verifica que no tenga jugadores registrados antes
+     * se recibe @elemnto
+     *              codigo=> codigo de cancha
+     *
+     * */
+    public function status(Request $elementos){
+        $validacion = Validator::make($elementos->all(), [
+            'codigo'      => 'required|numeric',
+        ]);
+        if($validacion->fails())
+            return (['estado'=>false,'mensaje'=>'Falta el codigo de Partida']);
+        else{
+            $partido =   Partida::find($elementos->codigo);
+            if($partido){
+                $partido->estado_pa =   false;
+                $partido->save();
+                return (['estado'=>true,'mensaje'=>'Se ha desactivado el Partido']);
+            }else
+                return (['estado'=>false,'mensaje'=>'No existe el Partido']);
+            }
     }
 }

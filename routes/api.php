@@ -50,9 +50,10 @@ Route::group(['middleware' => 'auth:jug'], function () {
   Route::delete('/jugador/partida', 'PartidasController@delete')-> name('eliminar.partida');
 
   //rutas de equipo
-  Route::get('/jugador/partida/ver', 'EquiposController@show')-> name('lista');
-  Route::post('/jugador/partida/unir', 'EquiposController@index')-> name('unir');
-  Route::delete('/jugador/partida/desunir', 'EquiposController@store')-> name('desunir');
+  Route::get('/jugador/partida/ver', 'EquiposController@index')-> name('lista');
+  Route::post('/jugador/partida/unir', 'EquiposController@store')-> name('unir');
+  Route::delete('/jugador/partida/desunir', 'EquiposController@delete')-> name('desunir');
+  Route::get('/jugador/partida/desactivar','EquiposController@status')->name('estado');
 
 
 });

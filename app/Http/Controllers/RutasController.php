@@ -33,10 +33,12 @@ class RutasController extends Controller{
       'unir'            =>  ['url'=>route('unir'),'metodo'=>'post'],
       'desunir'         =>  ['url'=>route('desunir'),'metodo'=>'delete'],
       'lista'           =>  ['url'=>route('lista'),'metodo'=>'get'],
+      'des_partida'     =>  ['url'=>route('estado'),'metodo'=>'get'],
 
       'ver_partida'     =>  ['url'=>route('ver.partida'),'metodo'=>'get'],
       'gua_partida'     =>  ['url'=>route('guardar.partida'),'metodo'=>'post'],
       'eli_partida'     =>  ['url'=>route('eliminar.partida'),'metodo'=>'delete'],
+
     ];
     return $lista;
     }
