@@ -27,7 +27,7 @@ Route::post('/ingresar', 'Auth\AutenticacionJugador@login')->name('login.submit'
 Route::post('/ingresarfb','Auth\AutenticacionJugador@fblogin')->name('loginfb.submit');
 Route::delete('/ingresar', 'Auth\AutenticacionJugador@logout')->name('logout');
 Route::post('/registrar', 'Auth\RegistrarJugador@crear')->name('register.submit');
-Route::get('/jugadores', 'JugadoresController@index')->name('inicio');
+Route::get('/jugadores', 'JugadoresController@index')->name('inicio');//borrar
 Route::post('/registrarfb', 'Auth\RegistrarJugador@fb')->name('registerfb.submit');
 
 Route::post('/jugador/activar','JugadoresController@activarjugador')->name('activar');
@@ -36,21 +36,21 @@ Route::post('/jugador/activar','JugadoresController@activarjugador')->name('acti
 Route::group(['middleware' => 'auth:jug'], function () {
   Route::get('/jugador', 'RutasController@funcionesjugador')->name('funciones');//muestra todas las funciones del jugador
   Route::get('/jugador/desactivar','JugadoresController@desactivarjugador')->name('desactivar');
-
   Route::post('/jugador/modificar', 'JugadoresController@modificarjugador')->name('modificar');
   Route::get('/jugador/ver', 'JugadoresController@verjugador')->name('ver');
-  Route::post('/jugador/unir', 'JugadoresController@unirsepartida')->name('unir');
-  Route::get('/jugador/verpartida', 'JugadoresController@verpartida')->name('ver.partida');
-  Route::get('/jugador/verequipo', 'JugadoresController@verequipo')->name('ver.equipo');
-  Route::get('/jugador/vercancha', 'JugadoresController@vercancha')-> name('ver.cancha');
 
-  Route::get('/partida', 'RutasController@funcionespartida')->name('fpartida');
-  Route::post('/partida/crear', 'PartidosController@crearpartida')->name('crear.partida');
-  Route::post('/partida/modificar', 'PartidosController@modificarpartida')->name('modificar.partida');
-  Route::delete('/partida/eliminar', 'PartidosController@eliminarpartida')->name('eliminar.partida');
-  Route::get('/partida/mostrar', 'PartidosController@mostrarpartida')->name('mostrar.partida');
-});
+  //rutas de canchas
+  Route::get('/jugador/cancha', 'CanchasController@index')-> name('ver.cancha');
+  Route::post('/jugador/cancha', 'CanchasController@store')-> name('guardar.cancha');
+  Route::delete('/jugador/cancha', 'CanchasController@delete')-> name('eliminar.cancha');
 
-Route::get('/error',function() {
-    abort('mal') ;
+  //rutas de partidas
+  Route::get('/jugador/partida', 'PartidasController@index')-> name('ver.partida');
+  Route::post('/jugador/partida', 'PartidasController@store')-> name('guardar.partida');
+  Route::delete('/jugador/partida', 'PartidasController@delete')-> name('eliminar.partida');
+
+  //rutas de equipo
+  Route::post('/jugador/partida/unir', 'PartidasController@index')-> name('unir');
+  Route::delete('/jugador/partida/desunir', 'PartidasController@store')-> name('guardar.partida');
+
 });
