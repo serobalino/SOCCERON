@@ -11,7 +11,7 @@ class Jugador extends Authenticatable{
     protected $guard        = 'jug';
     protected $table        = 'jugadores';
     protected $primaryKey   = 'id_ju';
-    public    $incrementing = false;
+    public    $incrementing = true;
     public    $timestamps   = false;
     protected $hidden       = ['contrasena_ju'];
     protected $fillable     = ['correo_ju', 'nombre_ju','id_ju'];
