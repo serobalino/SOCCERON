@@ -56,6 +56,6 @@ class Handler extends ExceptionHandler
      */
     protected function unauthenticated($request, AuthenticationException $exception)
     {
-        return response()->json(['estado'=>false,'mensaje'=>'Necesita iniciar sesión','vista'=>'login'], 401);
+        return response()->json(['estado'=>false,'mensaje'=>'Necesita iniciar sesión','vista'=>'login','url'=>route('login')], 401);
     }
 }
