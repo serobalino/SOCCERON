@@ -13,7 +13,7 @@ class Jugador extends Authenticatable{
     protected $primaryKey   = 'id_ju';
     public    $incrementing = false;
     public    $timestamps   = false;
-    protected $hidden       = ['contrasena_ju', 'token_ju'];
+    protected $hidden       = ['contrasena_ju'];
     protected $fillable     = ['correo_ju', 'nombre_ju','id_ju'];
 
     public function getAuthIdentifier() {
