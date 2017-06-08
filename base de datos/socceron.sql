@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     7/6/2017 19:00:50                            */
+/* Created on:     7/6/2017 19:41:31                            */
 /*==============================================================*/
 
 
@@ -61,6 +61,7 @@ create table partidas
    id_can               int not null,
    fecha_part           datetime,
    estado_part          bool,
+   num_jug_part         int,
    primary key (id_part)
 );
 
