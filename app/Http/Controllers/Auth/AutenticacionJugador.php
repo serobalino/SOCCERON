@@ -33,6 +33,15 @@ class AutenticacionJugador extends Controller{
       return (['estado'=>false,'mensaje'=>'Sesion cerrada','vista'=>'login']);
     }
 
+
+
+
+
+
+
+
+    
+
     public function fblogin(Request $request){
       $id = Jugador::where('correo_ju',$request->correo)->where('estado_ju',true)->first();
       if($id){
