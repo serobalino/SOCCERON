@@ -28,8 +28,8 @@ class PartidasController extends Controller{
      * funcion que ingresa una nueva partida
      * se recibe en @elemento
      *                  cancha=> codigo de cancha
-     *                  fecha
-     *                  jugadores
+     *                  fecha año-mes-dia hora:minuto:segundo
+     *                  jugadores 
      *
      * */
     public function store(Request $elementos){
