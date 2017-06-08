@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     7/6/2017 19:41:31                            */
+/* Created on:     7/6/2017 21:05:50                            */
 /*==============================================================*/
 
 
@@ -17,13 +17,13 @@ drop table if exists partidas;
 /*==============================================================*/
 create table canchas
 (
-   id_can               int not null auto_increment,
-   descripcion_can      varchar(50) not null,
-   sector_can           varchar(30) not null,
-   tipo_can             char(20),
-   latitud_can          decimal(8,2),
-   longitu_can          decimal(8,2),
-   primary key (id_can)
+   id_ca                int not null auto_increment,
+   descripcion_ca       varchar(50) not null,
+   sector_ca            varchar(30),
+   tipo_ca              char(20),
+   latitud_ca           decimal(8,2) not null,
+   longitu_ca           decimal(8,2) not null,
+   primary key (id_ca)
 );
 
 /*==============================================================*/
@@ -31,10 +31,9 @@ create table canchas
 /*==============================================================*/
 create table equipos
 (
-   id_part              int not null auto_increment,
-   id_ju                int,
-   fecha_co             timestamp,
-   primary key (id_part)
+   id_pa                int not null,
+   id_ju                int not null,
+   fecha_co             timestamp
 );
 
 /*==============================================================*/
@@ -57,20 +56,20 @@ create table jugadores
 /*==============================================================*/
 create table partidas
 (
-   id_part              int not null auto_increment,
-   id_can               int not null,
-   fecha_part           datetime,
-   estado_part          bool,
-   num_jug_part         int,
-   primary key (id_part)
+   id_pa                int not null auto_increment,
+   id_ca                int not null,
+   empieza_pa           datetime,
+   estado_pa            bool default 1,
+   jugadores_pa         int,
+   primary key (id_pa)
 );
 
-alter table equipos add constraint fk_conformado2 foreign key (id_part)
-      references partidas (id_part) on delete restrict on update restrict;
+alter table equipos add constraint fk_conformado2 foreign key (id_pa)
+      references partidas (id_pa) on delete restrict on update restrict;
 
 alter table equipos add constraint fk_conforman foreign key (id_ju)
       references jugadores (id_ju) on delete restrict on update restrict;
 
-alter table partidas add constraint fk_utilizan foreign key (id_can)
-      references canchas (id_can) on delete restrict on update restrict;
+alter table partidas add constraint fk_utilizan foreign key (id_ca)
+      references canchas (id_ca) on delete restrict on update restrict;
 
