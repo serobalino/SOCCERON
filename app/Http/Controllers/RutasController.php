@@ -32,7 +32,7 @@ class RutasController extends Controller{
 
       'unir'            =>  ['url'=>route('unir'),'metodo'=>'post'],
       'desunir'         =>  ['url'=>route('desunir'),'metodo'=>'delete'],
-      'lista'           =>  ['url'=>route('lista'),'metodo'=>'get'],
+      'lista'           =>  ['url'=>route('ver.partida'),'metodo'=>'get'],
       'des_partida'     =>  ['url'=>route('estado'),'metodo'=>'get'],
 
       'ver_partida'     =>  ['url'=>route('ver.partida'),'metodo'=>'get'],
