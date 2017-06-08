@@ -29,7 +29,6 @@ Route::post('/ingresarfb','Auth\AutenticacionJugador@fblogin')->name('loginfb.su
 Route::delete('/ingresar', 'Auth\AutenticacionJugador@logout')->name('logout');
 Route::post('/registrar', 'Auth\RegistrarJugador@crear')->name('register.submit');
 Route::post('/registrarfb', 'Auth\RegistrarJugador@fb')->name('registerfb.submit');
-
 Route::post('/jugador/activar','JugadoresController@activarjugador')->name('activar');
 
 //verifica que primero hayan iniciado session
