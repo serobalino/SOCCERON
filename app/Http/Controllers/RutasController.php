@@ -11,7 +11,9 @@ class RutasController extends Controller{
     $lista  = [
       'comprobarLogin'  =>  ['url'=>route('comprobar'),'metodo'=>'get'],
       'login'           =>  ['url'=>route('login.submit'),'metodo'=>'post'],
+      'loginfb'         =>  ['url'=>route('loginfb.submit'),'metodo'=>'post'],
       'registrar'       =>  ['url'=>route('register.submit'),'metodo'=>'post'],
+      'registrarfb'     =>  ['url'=>route('registerfb.submit'),'metodo'=>'post'],
       'logout'          =>  ['url'=>route('logout'),'metodo'=>'delete'],
       'activar'         =>  ['url'=>route('activar'),'metodo'=>'post']
     ];
