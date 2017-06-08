@@ -47,7 +47,7 @@ Route::group(['middleware' => 'auth:jug'], function () {
   Route::get('/jugador/partida', 'PartidasController@index')-> name('ver.partida');
   Route::post('/jugador/partida', 'PartidasController@store')-> name('guardar.partida');
   Route::delete('/jugador/partida', 'PartidasController@delete')-> name('eliminar.partida');
-    Route::get('/jugador/partida/ver', 'PartidasController@index')-> name('lista');
+  Route::get('/jugador/partida/ver', 'PartidasController@index')-> name('lista');
 
   //rutas de equipo
 
