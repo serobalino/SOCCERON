@@ -20,7 +20,8 @@ Route::middleware('auth:jue')->get('/jugador', function (Request $request) {
 //realizamos qui porque la aplicacion da un servicio
 //si fuera en web es porque ocupo servicios ya exsistentes
 
-Route::get('/','RutasController@index');
+Route::get('/','RutasController@index')->name('inicio');
+
 Route::get('/comprobar', 'Auth\AutenticacionJugador@checklog')->name('comprobar');
 Route::get('/ingresar', 'Auth\AutenticacionJugador@checklog')->name('login');
 Route::post('/ingresar', 'Auth\AutenticacionJugador@login')->name('login.submit');
