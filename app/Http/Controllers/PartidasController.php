@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Validator;
 use App\Equipo;
 use App\Partida;
 use Illuminate\Http\Request;

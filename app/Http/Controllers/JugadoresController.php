@@ -85,7 +85,9 @@ public function desactivarjugador(){
   public function unirsepartida()
   {
     return "unirsepartida";
+
   }
+
   public function verequipo()
   {
     return "verquipo";

@@ -33,7 +33,7 @@ class CanchasController extends Controller{
         else{
             $partidas   =   Partida::where('id_ca',$elemento->codigo)->get();
             if(count($partidas))
-                return (['estado'=>false,'mensaje'=>'No se puede borrar la cancha ya se encuentra registrada una partida']);
+                return (['estado'=>false,'mensaje'=>'No se puede borrar la cancha ya se encuentra registra una partida']);
             else{
                 $cancha =   Cancha::find($elemento->codigo);
                 if($cancha){

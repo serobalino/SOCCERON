@@ -2,11 +2,34 @@
 
 namespace App\Http\Controllers;
 
+
+use Validator;
 use App\Equipo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class EquiposController extends Controller{
+
+    /*
+     * funcion que lista los jugadores de una partida
+     * recibe por paramentro el codigo de la partida
+     *
+     * */
+    public function show(Request $partida){
+        $validacion = Validator::make($partida->all(), [
+            'partido'      => 'required|numeric',
+        ]);
+        if($validacion->fails())
+            return (['estado'=>false,'mensaje'=>'Falta el codigo de cancha']);
+        else{
+            $equipo =   DB::table('equipos')
+                            ->join('jugadores','jugadores.id_ju','=','equipos.id_ju')
+                            ->select('nombre_ju AS jugador')
+                            ->where('id_pa',$partida->partido)->get();
+            return $equipo;
+        }
+    }
 
     /*
      * funcion que guarda en equipo
