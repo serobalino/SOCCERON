@@ -17,7 +17,7 @@ Route::middleware('auth:jue')->get('/jugador', function (Request $request) {
     return $request->user();
 });*/
 
-//realizamos api porque la aplicacion da un servicio
+//realizamos qui porque la aplicacion da un servicio
 //si fuera en web es porque ocupo servicios ya exsistentes
 
 Route::get('/','RutasController@index')->name('inicio');
@@ -48,8 +48,10 @@ Route::group(['middleware' => 'auth:jug'], function () {
   Route::get('/jugador/partida', 'PartidasController@index')-> name('ver.partida');
   Route::post('/jugador/partida', 'PartidasController@store')-> name('guardar.partida');
   Route::delete('/jugador/partida', 'PartidasController@delete')-> name('eliminar.partida');
+    Route::get('/jugador/partida/ver', 'PartidasController@index')-> name('lista');
 
   //rutas de equipo
+
   Route::post('/jugador/partida/unir', 'EquiposController@store')-> name('unir');
   Route::delete('/jugador/partida/desunir', 'EquiposController@delete')-> name('desunir');
   Route::get('/jugador/partida/desactivar','EquiposController@status')->name('estado');
