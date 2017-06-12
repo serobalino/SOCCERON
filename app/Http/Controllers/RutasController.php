@@ -9,7 +9,7 @@ class RutasController extends Controller{
 //lista de actividades y route es de donde obtnego informacion
   public function index(){
     $lista  = [
-      'comprobarLogin'  =>  ['url'=>route('comprobar'),'metodo'=>'get'],
+      'comprobarLogin'  =>  ['url'=>route('comprobar'),'metodo'=>'get','campos'=>'correo'],
       'login'           =>  ['url'=>route('login.submit'),'metodo'=>'post'],
       'loginfb'         =>  ['url'=>route('loginfb.submit'),'metodo'=>'post'],
       'registrar'       =>  ['url'=>route('register.submit'),'metodo'=>'post'],
