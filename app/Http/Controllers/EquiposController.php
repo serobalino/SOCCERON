@@ -40,7 +40,6 @@ class EquiposController extends Controller{
             }
         }
     }
-
     /*
      * funcion que elimina un registro de equipo
      * verifica primero si existe el registro para eliminarlo
