@@ -51,7 +51,6 @@ Route::group(['middleware' => 'auth:jug'], function () {
     Route::get('/jugador/partida/ver', 'PartidasController@index')-> name('lista');
 
   //rutas de equipo
-
   Route::post('/jugador/partida/unir', 'EquiposController@store')-> name('unir');
   Route::delete('/jugador/partida/desunir', 'EquiposController@delete')-> name('desunir');
   Route::get('/jugador/partida/desactivar','EquiposController@status')->name('estado');
