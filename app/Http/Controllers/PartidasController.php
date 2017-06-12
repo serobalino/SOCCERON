@@ -21,7 +21,6 @@ class PartidasController extends Controller{
                             ->where('estado_pa',true)
                             ->select(DB::raw("id_pa id_,empieza_pa,jugadores_pa,(SELECT COUNT(*) FROM equipos WHERE id_pa=id_) actuales_pa,descripcion_ca,sector_ca,tipo_ca,latitud_ca,longitu_ca"))->get();
         return $partidas;
-
     }
 
     /*
@@ -51,7 +50,6 @@ class PartidasController extends Controller{
                 return (['estado'=>false,'mensaje'=>"No se pudo guardar el Partido, reintente"]);
         }
     }
-
     /*
      * funcion que elimina una partida
      * verifica que no tenga jugadores registrados antes
@@ -78,9 +76,7 @@ class PartidasController extends Controller{
                     return (['estado'=>false,'mensaje'=>'No existe el Partido']);
             }
         }
-
     }
-
     /*
      * funcion que cambia el estado a un partida
      * verifica que no tenga jugadores registrados antes
@@ -102,6 +98,6 @@ class PartidasController extends Controller{
                 return (['estado'=>true,'mensaje'=>'Se ha desactivado el Partido']);
             }else
                 return (['estado'=>false,'mensaje'=>'No existe el Partido']);
-            }
-    }
+          }
+  }
 }

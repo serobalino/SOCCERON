@@ -27,7 +27,6 @@ class RegistrarJugador extends Controller{
           else
             return (['return'=>false,'mensaje'=>'No se pudo registrar reintente']);
     }
-
     public function crear(Request $datos){
       $validacion = Validator::make($datos->all(), [
           'nombre'      => 'required',

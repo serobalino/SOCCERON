@@ -53,7 +53,6 @@ class AutenticacionJugador extends Controller{
 
 
 
-
     public function fblogin(Request $request){
       $id = Jugador::where('correo_ju',$request->correo)->where('estado_ju',true)->first();
       if($id){
