@@ -63,7 +63,8 @@ return [
     | Supported: "database", "eloquent"
     |
     */
-
+//eloquent en modelo jugador se definen los provideer, eloquent son funciones q tienen x defento laravel
+//CRUD
     'providers' => [
         'jugadores' => [
             'driver' => 'eloquent',
