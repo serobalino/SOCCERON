@@ -57,7 +57,37 @@ class PartidasController extends Controller{
      *              codigo=> codigo de cancha
      *
      * */
-    
+     public function delete(Request $elementos){
+       //validaciones necesarias sobre el usuario logueado
+       //ademas de codigo ingresado para poder eliminar
+         $validacion = Validator::make($elementos->all(), [
+             'codigo'      => 'required|numeric',
+         ]);
+         //si la validacion falla, entonces no se podra eliminar una partida que no existe
+
+         if($validacion->fails())
+             return (['estado'=>false,'mensaje'=>'Falta el codigo de Partida']);
+             //de lo contrario se eliminara con exito la partida segun el codigo ingresado
+         else{
+             $jugadores   =   Equipo::where('id_pa',$elementos->codigo)->get();//se realiza una validacion x si hay jugadores registrados en la partida
+             //no se podra eliminar una partida en la que tenga varios jugadores asignados ya q borraria tb a los jugadores
+             if(count($jugadores))
+                 return (['estado'=>false,'mensaje'=>'No se puede borrar el Partido se encuentra registrado jugadores']);//si la partida consta de jugadores no se borraria
+                 //en ese caso se podria eliminar la partida si tiene un estado inactivo
+                 //nuevamente se hace la verificacion x codigo de partida
+             else{
+                 $partido =   Partida::find($elementos->codigo);//se busca la partida x el codigo ingresado
+                 if($partido){
+                     $partido->delete();//si se encuentra la partida correctamente se procedera a cambiar su estado
+                     //cambiamos el estado de la partida para que se pueda eliminar sin problemas
+                     //siempre y cuando el estado de la partida este en false, se borrara la partida sin ningun problemas
+                     //ya no tendremos que preocuparnos de los jugadores registrados
+                     return (['estado'=>true,'mensaje'=>'Se borro el Partido correctamente']);
+                 }else
+                     return (['estado'=>false,'mensaje'=>'No existe el Partido']);
+             }
+         }
+     }
     /*
      * funcion que cambia el estado a un partida
      * verifica que no tenga jugadores registrados antes
