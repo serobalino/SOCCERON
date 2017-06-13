@@ -39,6 +39,8 @@ class RutasController extends Controller{
       'gua_partida'     =>  ['url'=>route('guardar.partida'),'metodo'=>'post'],
       'eli_partida'     =>  ['url'=>route('eliminar.partida'),'metodo'=>'delete'],
 
+
+
     ];
     return $lista;
     }
