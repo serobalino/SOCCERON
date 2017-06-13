@@ -57,26 +57,7 @@ class PartidasController extends Controller{
      *              codigo=> codigo de cancha
      *
      * */
-    public function delete(Request $elementos){
-        $validacion = Validator::make($elementos->all(), [
-            'codigo'      => 'required|numeric',
-        ]);
-        if($validacion->fails())
-            return (['estado'=>false,'mensaje'=>'Falta el codigo de Partida']);
-        else{
-            $jugadores   =   Equipo::where('id_pa',$elementos->codigo)->get();
-            if(count($jugadores))
-                return (['estado'=>false,'mensaje'=>'No se puede borrar el Partido se encuentra registrado jugadores']);
-            else{
-                $partido =   Partida::find($elementos->codigo);
-                if($partido){
-                    $partido->delete();
-                    return (['estado'=>true,'mensaje'=>'Se borro el Partido correctamente']);
-                }else
-                    return (['estado'=>false,'mensaje'=>'No existe el Partido']);
-            }
-        }
-    }
+    
     /*
      * funcion que cambia el estado a un partida
      * verifica que no tenga jugadores registrados antes
