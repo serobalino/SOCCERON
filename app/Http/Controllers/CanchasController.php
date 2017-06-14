@@ -10,11 +10,11 @@ use Illuminate\Http\Request;
 class CanchasController extends Controller{
 
     /*
-     * funcion sin paramentros
+     * funcion sin parametros
      *  devuelve el listado de canchas registradas en la base de datos
      * */
     public function index(){
-        $canchas  =   Cancha::all();
+        $canchas  =   Cancha::all();//lista todas las canchas
         return $canchas;
     }
 
