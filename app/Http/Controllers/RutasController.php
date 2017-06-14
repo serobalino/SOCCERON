@@ -23,11 +23,11 @@ class RutasController extends Controller{
   public function funcionesjugador(){
     $lista =[
       'desactivar'      =>  ['url'=>route('desactivar'),'metodo'=>'get'],
-      'modificarjugador'=>  ['url'=>route('modificar'),'metodo'=>'post'],
+      'modificarjugador'=>  ['url'=>route('modificar'),'metodo'=>'post','campos'=> ['nombre','contrasena']],
       'perfil'          =>  ['url'=>route('ver'),'metodo'=>'get'],
 
       'ver_cancha'      =>  ['url'=>route('ver.cancha'),'metodo'=>'get'],
-      'gua_cancha'      =>  ['url'=>route('guardar.cancha'),'metodo'=>'post'],
+      'gua_cancha'      =>  ['url'=>route('guardar.cancha'),'metodo'=>'post','campos'=>['descripcion','sector','tipo','latitud','longitud']],
       'eli_cancha'      =>  ['url'=>route('eliminar.cancha'),'metodo'=>'delete'],
 
       'unir'            =>  ['url'=>route('unir'),'metodo'=>'post'],
@@ -36,8 +36,8 @@ class RutasController extends Controller{
       'des_partida'     =>  ['url'=>route('estado'),'metodo'=>'get'],
 
       'ver_partida'     =>  ['url'=>route('ver.partida'),'metodo'=>'get'],
-      'gua_partida'     =>  ['url'=>route('guardar.partida'),'metodo'=>'post'],
-      'eli_partida'     =>  ['url'=>route('eliminar.partida'),'metodo'=>'delete'],
+      'gua_partida'     =>  ['url'=>route('guardar.partida'),'metodo'=>'post','campos'=> ['cancha','fecha','numero jugadores']],
+      'eli_partida'     =>  ['url'=>route('eliminar.partida'),'metodo'=>'delete','campos'=> ['codigo cancha']],
 
 
 
