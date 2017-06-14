@@ -37,7 +37,7 @@ class PartidasController extends Controller{
             'fecha'     => 'required',
             'jugadores' => 'required|numeric',
         ]);
-        if($validacion->fails())
+        if($validacion->fails())//si la validación falla, no se podrá ingresar una partida
             return (['estado'=>false,'mensaje'=>'Faltan campos']);
         else{
             $partida    =   new Partida();
