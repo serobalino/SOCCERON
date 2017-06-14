@@ -96,18 +96,22 @@ class PartidasController extends Controller{
      *
      * */
     public function status(Request $elementos){
+      //valida la partida por codigo
         $validacion = Validator::make($elementos->all(), [
             'codigo'      => 'required|numeric',
-        ]);
+        ]);//si la validacion falla es porque no se ha ingresado un codigo de la partida
+        //y no se podra cambiar el estado de la partida
         if($validacion->fails())
-            return (['estado'=>false,'mensaje'=>'Falta el codigo de Partida']);
+            return (['estado'=>false,'mensaje'=>'Falta el codigo de Partida']);//se mostrara el siguiente mensaje
         else{
-            $partido =   Partida::find($elementos->codigo);
+            $partido =   Partida::find($elementos->codigo);//busca la partida por codigo
             if($partido){
-                $partido->estado_pa =   false;
-                $partido->save();
-                return (['estado'=>true,'mensaje'=>'Se ha desactivado el Partido']);
+                $partido->estado_pa =   false;//la partida cambia de estado a falso
+                $partido->save();//se guardo el cambio realizado
+                return (['estado'=>true,'mensaje'=>'Se ha desactivado el Partido']);// al desactivar la partida su estado cambia y se muestra
+                //se muestra el emnsaje de desactiva
             }else
+            //caso contrario no se cambiara el estado porque pueda que la partida ni exista
                 return (['estado'=>false,'mensaje'=>'No existe el Partido']);
           }
   }
