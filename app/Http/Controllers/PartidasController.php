@@ -44,6 +44,7 @@ class PartidasController extends Controller{
             $partida->id_ca         =   $elementos->cancha;
             $partida->empieza_pa    =   $elementos->fecha;
             $partida->jugadores_pa  =   $elementos->jugadores;
+            //validación de patido guardado
             if($partida->save())
                 return (['estado'=>true,'mensaje'=>"Se guardo correctamente el Partido"]);
             else
