@@ -12,7 +12,7 @@ class JugadoresController extends Controller{
     $cualquiera=Jugador::all();
       return $cualquiera;
   }
-  /*public function ingresar(Request $datos){
+  public function ingresar(Request $datos){
     $cualquiera = new Jugador();
     $cualquiera->id_ju    = $datos->id;
     $cualquiera->nombre_ju    = $datos->nombres;
@@ -25,7 +25,7 @@ class JugadoresController extends Controller{
       return "Se guardo correctamente";
     else
       return "No se guardo";
-  }*/
+  }
   //select con limit 1 ->first()
   public function activarjugador(Request $datos){
     $validacion = Validator::make($datos->all(), [
