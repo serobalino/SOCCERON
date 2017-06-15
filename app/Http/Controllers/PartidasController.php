@@ -80,9 +80,7 @@ class PartidasController extends Controller{
                  $partido =   Partida::find($elementos->codigo);//se busca la partida x el codigo ingresado
                  if($partido){
                      $partido->delete();//si se encuentra la partida correctamente se procedera a cambiar su estado
-                     //cambiamos el estado de la partida para que se pueda eliminar sin problemas
-                     //siempre y cuando el estado de la partida este en false, se borrara la partida sin ningun problemas
-                     //ya no tendremos que preocuparnos de los jugadores registrados
+                     
                      return (['estado'=>true,'mensaje'=>'Se borro el Partido correctamente']);
                  }else
                      return (['estado'=>false,'mensaje'=>'No existe el Partido']);
