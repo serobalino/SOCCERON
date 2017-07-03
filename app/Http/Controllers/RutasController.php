@@ -19,7 +19,7 @@ class RutasController extends Controller{
     ];
     return $lista;
   }
-
+//menu para ser mas visible 
   public function funcionesjugador(){
     $lista =[
       'desactivar'      =>  ['url'=>route('desactivar'),'metodo'=>'get'],
