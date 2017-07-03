@@ -71,8 +71,10 @@ class CanchasController extends Controller{
             $cancha->longitu_ca     =   $elemento->longitud;
             $nombre=$cancha->descripcion_ca;
             if($cancha->save())
+            //guardar
                 return (['estado'=>true,'mensaje'=>"Se guardo correctamente $nombre"]);
             else
+            //error
                 return (['estado'=>false,'mensaje'=>"No se pudo guardar $nombre, reintente"]);
         }
     }
