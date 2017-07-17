@@ -1,0 +1,27 @@
+.input-field input:focus + label {
+    color: #007700 !important;
+}
+/* label underline focus color */
+.row .input-field input:focus {
+    border-bottom: 1px solid #007700 !important;
+    box-shadow: 0 1px 0 0 #007700 !important
+}
+.fondo{
+    background-color: #c3c3c4;
+}
+.fondo2{
+    background-color: #e5e5e4;
+}
+.wrapper input[type="text"] {
+    position: relative;
+}
+
+input { font-family: 'FontAwesome'; } /* This is for the placeholder */
+
+.wrapper:before {
+    font-family: 'FontAwesome';
+    color:red;
+    position: relative;
+    left: -10px;
+    content: "\f007";
+}
