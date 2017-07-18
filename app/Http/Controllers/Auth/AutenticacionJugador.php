@@ -16,6 +16,7 @@ class AutenticacionJugador extends Controller{
 
     public function login(Request $request){
         if(Auth::guard('jug')->attempt(['correo_ju'=>$request->correo,'password'=>$request->contrasena,'estado_ju'=>true],true))
+
           return (['estado'=>true,'mensaje'=>'Credenciales Correctos','vista'=>'inicio','info'=>Auth::user()]);
         else
           return (['estado'=>false,'mensaje'=>'Credenciales Incorrectos','vista'=>'login','url'=>route('login')]);
@@ -35,24 +36,6 @@ class AutenticacionJugador extends Controller{
       return (['estado'=>false,'mensaje'=>'Sesion cerrada','vista'=>'login']);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public function fblogin(Request $request){
       $id = Jugador::where('correo_ju',$request->correo)->where('estado_ju',true)->first();
       if($id){
@@ -60,10 +43,13 @@ class AutenticacionJugador extends Controller{
         $id->save();
         Auth::loginUsingId($id->id_ju);
         return (['estado'=>true,'mensaje'=>'Credenciales Correctos','vista'=>'inicio','info'=>Auth::user()]);
-      }else
-        return (['estado'=>false,'mensaje'=>'Credenciales Incorrectos','vista'=>'registro','url'=>route('registerfb.submit')]);
+      }else{
+        $jugador                =  new Jugador();
+        $jugador->fb_ju         = $request->fb;
+        $jugador->nombre_ju     = $request->nombre;
+        $jugador->correo_ju     = $request->correo;
+        $jugador->contrasena_ju = bcrypt($request->correo);
+        return (['estado'=>true,'mensaje'=>'Credenciales Guardados','vista'=>'inicio','url'=>route('registerfb.submit')]);
+      }
     }
-
-
-
 }
