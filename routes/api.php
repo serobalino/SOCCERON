@@ -19,6 +19,8 @@ Route::middleware('auth:jue')->get('/jugador', function (Request $request) {
 
 //realizamos qui porque la aplicacion da un servicio
 //si fuera en web es porque ocupo servicios ya exsistentes
+Route::group(['middleware'=>'cors'],function(){
+
 
 Route::get('/','RutasController@index')->name('inicio');
 
@@ -31,7 +33,6 @@ Route::post('/registrar', 'Auth\RegistrarJugador@crear')->name('register.submit'
 Route::post('/registrarfb', 'Auth\RegistrarJugador@fb')->name('registerfb.submit');
 
 Route::post('/jugador/activar','JugadoresController@activarjugador')->name('activar');
-
 //verifica que primero hayan iniciado session
 Route::group(['middleware' => 'auth:jug'], function () {
   Route::get('/jugador', 'RutasController@funcionesjugador')->name('funciones');//muestra todas las funciones del jugador
@@ -54,6 +55,5 @@ Route::group(['middleware' => 'auth:jug'], function () {
   Route::post('/jugador/partida/unir', 'EquiposController@store')-> name('unir');
   Route::delete('/jugador/partida/desunir', 'EquiposController@delete')-> name('desunir');
   Route::get('/jugador/partida/desactivar','EquiposController@status')->name('estado');
-
-
+});
 });
