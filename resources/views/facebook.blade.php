@@ -22,5 +22,8 @@
   <p>Erick Erazo</p>
   <p>Copyright ® 2017</p>
 </footer>
+<script>
+    window.close();
+</script>
 </body>
 </html>

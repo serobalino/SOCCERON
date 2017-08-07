@@ -2,25 +2,138 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Validator;
 use App\Equipo;
 use App\Partida;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Jenssegers\Date\Date;
 
 class PartidasController extends Controller{
 
     /*
-     * funcion que lista todas las partidas activas
+     * funcion que lista todas las partidas activas menos las del jguador
      * con una descricion de jugadores inscritos y el detalle de la cancha
      *
      * */
-    public function index(){
+    public function index1(){
         $partidas   =   DB::table('partidas')
                             ->join('canchas','canchas.id_ca','=','partidas.id_ca')
                             ->where('estado_pa',true)
                             ->select(DB::raw("id_pa id_,empieza_pa,jugadores_pa,(SELECT COUNT(*) FROM equipos WHERE id_pa=id_) actuales_pa,descripcion_ca,sector_ca,tipo_ca,latitud_ca,longitu_ca"))->get();
-        return $partidas;
+
+        Date::setLocale('es');
+
+        $usuario = Auth::id();
+        foreach ($partidas as $item){
+            $subsonsulta            =   Equipo::join('jugadores','jugadores.id_ju','=','equipos.id_ju')->where('id_pa',$item->id_)->where('creador_co',true)->get();
+            $subsonsulta2           =   Equipo::where('id_pa',$item->id_)->where('id_ju',$usuario)->get();
+            if($subsonsulta[0]->id_ju!==$usuario){
+                $a['id_']               =   $item->id_;
+                $a['empieza_pa']        =   Date::createFromFormat('Y-m-d H:i:s',$item->empieza_pa)->diffForHumans();
+                $a['dia_pa']            =   Date::createFromFormat('Y-m-d H:i:s',$item->empieza_pa)->format('l d F Y');
+                $a['hora_pa']           =   Date::createFromFormat('Y-m-d H:i:s',$item->empieza_pa)->format('H:i');
+                $a['jugadores_pa']      =   $item->jugadores_pa;
+                $a['actuales_pa']       =   $item->actuales_pa;
+                $a['descripcion_ca']    =   $item->descripcion_ca;
+                $a['sector_ca']         =   $item->sector_ca;
+                $a['tipo_ca']           =   $item->tipo_ca;
+                $a['latitud_ca']        =   $item->latitud_ca;
+                $a['longitu_ca']        =   $item->longitu_ca;
+                $a['creador']           =   $subsonsulta[0]->nombre_ju;
+                $a['registrado']        =   count($subsonsulta2);
+                $b[]                    =   $a;
+            }
+        }
+        if(!isset($b))
+            return [];
+        else
+            return $b;
+    }
+
+    /*
+     * partidas activas del jugador
+     *
+     * */
+
+    public function index2(){
+        $partidas   =   DB::table('partidas')
+            ->join('canchas','canchas.id_ca','=','partidas.id_ca')
+            ->select(DB::raw("id_pa id_,empieza_pa,jugadores_pa,(SELECT COUNT(*) FROM equipos WHERE id_pa=id_) actuales_pa,descripcion_ca,sector_ca,tipo_ca,latitud_ca,longitu_ca"))->get();
+        Date::setLocale('es');
+
+        $usuario = Auth::id();
+        foreach ($partidas as $item){
+            $subsonsulta            =   Equipo::join('jugadores','jugadores.id_ju','=','equipos.id_ju')->where('id_pa',$item->id_)->where('creador_co',true)->get();
+            if($subsonsulta[0]->id_ju===$usuario){
+                $a['id_']               =   $item->id_;
+                $a['empieza_pa']        =   Date::createFromFormat('Y-m-d H:i:s',$item->empieza_pa)->diffForHumans();
+                $a['dia_pa']            =   Date::createFromFormat('Y-m-d H:i:s',$item->empieza_pa)->format('l d F Y');
+                $a['hora_pa']           =   Date::createFromFormat('Y-m-d H:i:s',$item->empieza_pa)->format('H:i');
+                $a['jugadores_pa']      =   $item->jugadores_pa;
+                $a['actuales_pa']       =   $item->actuales_pa;
+                $a['descripcion_ca']    =   $item->descripcion_ca;
+                $a['sector_ca']         =   $item->sector_ca;
+                $a['tipo_ca']           =   $item->tipo_ca;
+                $a['latitud_ca']        =   $item->latitud_ca;
+                $a['longitu_ca']        =   $item->longitu_ca;
+                $a['creador']           =   $subsonsulta[0]->nombre_ju;
+                $b[]                    =   $a;
+            }
+        }
+        if(!isset($b))
+            return [];
+        else
+            return $b;
+    }
+
+    /*
+     * devuelve el resultado de una partida
+     *
+     *
+     *
+     *
+     * */
+    public function show($id){
+        $partidas   =   DB::table('partidas')
+            ->join('canchas','canchas.id_ca','=','partidas.id_ca')
+            ->where('id_pa',$id)
+            ->select(DB::raw("id_pa id_,empieza_pa,jugadores_pa,estado_pa,(SELECT COUNT(*) FROM equipos WHERE id_pa=id_) actuales_pa,descripcion_ca,sector_ca,tipo_ca,latitud_ca,longitu_ca"))->first();
+
+        Date::setLocale('es');
+
+        $usuario = Auth::id();
+
+                $subsonsulta            =   Equipo::join('jugadores','jugadores.id_ju','=','equipos.id_ju')->where('id_pa',$partidas->id_)->where('creador_co',true)->first();
+                $a['id_']               =   $partidas->id_;
+                $a['empieza_pa']        =   Date::createFromFormat('Y-m-d H:i:s',$partidas->empieza_pa)->diffForHumans();
+                $a['dia_pa']            =   Date::createFromFormat('Y-m-d H:i:s',$partidas->empieza_pa)->format('l d F Y');
+                $a['hora_pa']           =   Date::createFromFormat('Y-m-d H:i:s',$partidas->empieza_pa)->format('H:i');
+                $a['jugadores_pa']      =   $partidas->jugadores_pa;
+                $a['actuales_pa']       =   $partidas->actuales_pa;
+                $a['descripcion_ca']    =   $partidas->descripcion_ca;
+                $a['sector_ca']         =   $partidas->sector_ca;
+                $a['tipo_ca']           =   $partidas->tipo_ca;
+                $a['latitud_ca']        =   $partidas->latitud_ca;
+                $a['longitu_ca']        =   $partidas->longitu_ca;
+                $a['fb_ju']             =   $subsonsulta->fb_ju;
+                $a['registrados']       =   Equipo::join('jugadores','jugadores.id_ju','=','equipos.id_ju')->where('id_pa',$partidas->id_)->get();
+
+                $a['activo']            =   $partidas->estado_pa;
+
+                if($subsonsulta->id_ju===$usuario) {
+                    $a['creador']       =   'Yo';
+                    $a['estado']        =   -1;//creador    DESACTIVAR PARTIDA
+                }else {
+                    $a['creador']       =   $subsonsulta->nombre_ju;
+                    $numero             =   Equipo::where('id_pa',$partidas->id_)->where('id_ju',$usuario)->get();
+                    if(count($numero)===0)
+                        $a['estado']    =   0;//unierse     UNIRSE
+                    else
+                        $a['estado']    =   1;//des         DESUNIRSE
+                }
+        return $a;
     }
 
     /*
@@ -45,9 +158,15 @@ class PartidasController extends Controller{
             $partida->empieza_pa    =   $elementos->fecha;
             $partida->jugadores_pa  =   $elementos->jugadores;
             //validación de patido guardado
-            if($partida->save())
-                return (['estado'=>true,'mensaje'=>"Se guardo correctamente el Partido"]);
-            else
+            if($partida->save()) {
+                $equipo =   new Equipo();
+                $equipo->id_pa      =   $partida->id_pa;
+                $equipo->id_ju      =   Auth::id();
+                $equipo->creador_co =   true;
+                $equipo->save();
+
+                return (['estado' => true, 'mensaje' => "Se guardo correctamente el Partido"]);
+            }else
                 return (['estado'=>false,'mensaje'=>"No se pudo guardar el Partido, reintente"]);
         }
     }
@@ -113,5 +232,23 @@ class PartidasController extends Controller{
             //caso contrario no se cambiara el estado porque pueda que la partida ni exista
                 return (['estado'=>false,'mensaje'=>'No existe el Partido']);
           }
-  }
+    }
+
+
+    /**
+     *
+     *
+     *
+     *
+     *
+     * */
+    public function dardeBaja(){
+        //$query  =   Partida::where('empieza_pa',)
+        Date::setLocale('es');
+        $a = Date::now()->format('Y-m-d H:i:s');
+
+        $query  =   Partida::where('empieza_pa','<',$a)->update(['estado_pa' => 0]);
+
+        return $query;
+    }
 }

@@ -46,14 +46,20 @@ Route::group(['middleware' => 'auth:jug'], function () {
   Route::delete('/jugador/cancha', 'CanchasController@delete')-> name('eliminar.cancha');
 
   //rutas de partidas
-  Route::get('/jugador/partida', 'PartidasController@index')-> name('ver.partida');
+  Route::get('/jugador/partida', 'PartidasController@index1')-> name('ver.partida');
+  Route::get('/jugador/partida/ver', 'PartidasController@index2')-> name('lista');
+  Route::get('/jugador/partida/{id}', 'PartidasController@show')-> name('show.partida');
   Route::post('/jugador/partida', 'PartidasController@store')-> name('guardar.partida');
   Route::delete('/jugador/partida', 'PartidasController@delete')-> name('eliminar.partida');
-    Route::get('/jugador/partida/ver', 'PartidasController@index')-> name('lista');
+
 
   //rutas de equipo
   Route::post('/jugador/partida/unir', 'EquiposController@store')-> name('unir');
   Route::delete('/jugador/partida/desunir', 'EquiposController@delete')-> name('desunir');
-  Route::get('/jugador/partida/desactivar','EquiposController@status')->name('estado');
+  Route::get('/jugador/partida/desactivar','PartidasController@status')->name('estado');
 });
 });
+
+
+//dar de baja partidas
+Route::get('verificar','PartidasController@dardebaja');

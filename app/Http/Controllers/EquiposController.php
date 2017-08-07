@@ -52,13 +52,13 @@ class EquiposController extends Controller{
             'partido'      => 'required|numeric',
         ]);
         if($validacion->fails())
-            return (['estado'=>false,'mensaje'=>'Falta el codigo de cancha']);
+            return (['estado'=>false,'mensaje'=>'Falta el codigo de Partido']);
         else{
-            $unidas   =   Equipo::where('id_pa',$partida->codigo)->where('id_ju',Auth::id())->get();
-            if(count($unidas))
+            $unidas   =   Equipo::where('id_pa',$partida->partido)->where('id_ju',Auth::id())->get();
+            if(!count($unidas))
                 return (['estado'=>false,'mensaje'=>'Usted no se a unido a ese Partido']);
             else{
-                $desunir =   Equipo::where('id_pa',$partida->codigo)->where('id_ju',Auth::id())->delete();
+                $desunir =   Equipo::where('id_pa',$partida->partido)->where('id_ju',Auth::id())->delete();
                 if($desunir)
                     return (['estado'=>true,'mensaje'=>'Se ha desunido de el Partido']);
                 else
